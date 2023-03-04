@@ -1,4 +1,4 @@
-const { app, BrowserWindow, dialog } = require('electron');
+const { app, BrowserWindow, dialog, ipcMain } = require('electron');
 const path = require('path');
 
 const createWindow = () => {
@@ -15,14 +15,19 @@ const createWindow = () => {
 	win.webContents.on('will-prevent-unload', (event) => {
 		const options = {
 			type: 'question',
-			buttons: ['Cancel', 'Leave'],
-			message: 'Leave Site?',
-			detail: 'Changes that you made may not be saved.',
+			buttons: ['Cancel', 'Quit'],
+			message: 'Quit Snap?',
+			detail: 'Make sure to save your changes.',
 		};
 		const response = dialog.showMessageBoxSync(null, options);
 		if (response === 1) {
 			event.preventDefault();
 		}
+	});
+
+	win.webContents.session.on('will-download', (event, item, contents) => {
+		console.log('download!');
+		console.log(item.getURL(), item.getMimeType(), item.getFilename());
 	});
 
 	win.loadFile('Snap/snap.html');
