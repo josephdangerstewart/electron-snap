@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, dialog } = require('electron');
 const path = require('path');
 
 const createWindow = () => {
@@ -7,10 +7,23 @@ const createWindow = () => {
 		height: 600,
 		webPreferences: {
 			preload: path.join(__dirname, 'preload.js'),
+		},
+	});
+
+	win.webContents.on('will-prevent-unload', (event) => {
+		const options = {
+			type: 'question',
+			buttons: ['Cancel', 'Leave'],
+			message: 'Leave Site?',
+			detail: 'Changes that you made may not be saved.',
+		};
+		const response = dialog.showMessageBoxSync(null, options);
+		if (response === 1) {
+			event.preventDefault();
 		}
 	});
 
-	win.loadFile('index.html');
+	win.loadFile('Snap/snap.html');
 };
 
 app.whenReady().then(() => {
