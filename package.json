@@ -1,0 +1,14 @@
+{
+	"name": "electron-snap",
+	"version": "1.0.0",
+	"description": "An electron around Snap to make it easier to use offline",
+	"main": "index.js",
+	"author": "Joseph Stewart",
+	"license": "MIT",
+	"scripts": {
+		"start": "electron ."
+	},
+	"dependencies": {
+		"electron": "^23.1.2"
+	}
+}
