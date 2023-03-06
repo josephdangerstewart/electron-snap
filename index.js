@@ -30,7 +30,7 @@ const createWindow = () => {
 		console.log(item.getURL(), item.getMimeType(), item.getFilename());
 	});
 
-	win.loadFile('Snap/snap.html');
+	win.loadFile('./index.html');
 };
 
 app.whenReady().then(() => {
