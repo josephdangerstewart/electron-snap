@@ -9,6 +9,7 @@
 		"start": "electron ."
 	},
 	"dependencies": {
-		"electron": "^23.1.2"
+		"electron": "^23.1.2",
+		"fs": "^0.0.1-security"
 	}
 }

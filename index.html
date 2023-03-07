@@ -36,6 +36,7 @@
         <script src="Snap/src/api.js?version=2022-11-28"></script>
         <script src="Snap/src/sha512.js?version=2019-06-27"></script>
         <script src="Snap/src/FileSaver.min.js?version=2019-06-27"></script>
+		<script src="ideOverrides.js"></script>
         <script>
             var world;
             window.onload = function () {
@@ -55,7 +56,7 @@
                 };
 
                 if ('serviceWorker' in navigator) {
-                    navigator.serviceWorker.register('sw.js');
+                    navigator.serviceWorker.register('Snap/sw.js');
                 }
                 world = new WorldMorph(document.getElementById('world'));
                 new IDE_Morph().openIn(world);

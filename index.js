@@ -1,5 +1,12 @@
-const { app, BrowserWindow, dialog } = require('electron');
+const {
+	app,
+	BrowserWindow,
+	dialog,
+	ipcMain,
+	nativeImage,
+} = require('electron');
 const path = require('path');
+const fs = require('fs');
 
 const createWindow = () => {
 	const win = new BrowserWindow({
@@ -32,6 +39,33 @@ const createWindow = () => {
 
 	win.loadFile('./index.html');
 };
+
+ipcMain.on('saveLocalFile', (event, fileName, mimeType, contents) => {
+	const rawExtension = mimeType.split('/')[1].split(';')[0];
+	const extension = rawExtension === 'plain' ? 'txt' : rawExtension;
+
+	// TODO: Need to handle audio
+	if (extension === 'png') {
+		const img = nativeImage.createFromDataURL(contents);
+		contents = img.toPNG();
+	}
+
+	dialog.showSaveDialog(
+		BrowserWindow.getFocusedWindow(),
+		{
+			defaultPath: `${fileName}.${extension}`,
+			filters: [
+				{
+					name: 'text',
+					extensions: [extension],
+				},
+			],
+		},
+		(filename) => {
+			fs.writeFileSync(filename, contents);
+		}
+	);
+});
 
 app.whenReady().then(() => {
 	createWindow();
