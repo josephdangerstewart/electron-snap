@@ -4,10 +4,10 @@ An electron wrapper around snap, designed to make snap easier to use offline in 
 
 ## Motivation
 
-My students (ages ranging from 3rd grade to 8th grade) consistently find the offline student experience for snap confusing. Downloaded html, css, and javascript opened directly in the browser has proven to be insufficient in the following ways:
+My students (ages ranging from 3rd grade to 8th grade) consistently find the offline student experience for snap confusing. Snap is an awesome tool for teaching the basics of computer science, but I don't want to require my students to create an account with an online service in order to use it. I have been making the current solution work, but downloaded html, css, and javascript opened directly in the browser has proven to be insufficient in the following ways:
 
 1. Students often try to open their projects by directly opening the project XML files
-2. Students get distracted by the web browser during class even without internet connection
+2. Students get distracted by the web browser during class even without internet connection (they always manage to find the hidden offline game)
 3. Students forget how to open snap and thus don't use it outside of class
 4. "Downloading" exported files is confusing for students for a few reasons
 	1. Microsoft edge shows a warning whenever saving xml files that students often forget to accept, resulting in projects being unsaved and data being lost
