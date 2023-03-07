@@ -44,7 +44,6 @@ ipcMain.on('saveLocalFile', (event, fileName, mimeType, contents) => {
 	const rawExtension = mimeType.split('/')[1].split(';')[0];
 	const extension = rawExtension === 'plain' ? 'txt' : rawExtension;
 
-	// TODO: Need to handle audio
 	if (extension === 'png') {
 		const img = nativeImage.createFromDataURL(contents);
 		contents = img.toPNG();
