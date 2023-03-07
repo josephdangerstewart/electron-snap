@@ -41,7 +41,7 @@ The expectation is that students should really only have one workspace
 Example workspace structure
 
 ```
-<root>/Workspace.snap	# Snap workspace file, opens snap and prompts student to set default workspace
+<root>/Workspace.snap		# Snap workspace file, opens snap and prompts student to set default workspace
 <root>/projects/ 		# Project files
 <root>/scripts/			# Exported scripts
 <root>/blocks/			# Exported blocks
